@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/cadepreister/Desktop/BasicCalc/Practice-Calc/BasicCalc.csproj": {}
+    "/Users/cadepreister/Desktop/Practice-Calc/BasicCalc.csproj": {}
   },
   "projects": {
-    "/Users/cadepreister/Desktop/BasicCalc/Practice-Calc/BasicCalc.csproj": {
+    "/Users/cadepreister/Desktop/Practice-Calc/BasicCalc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/cadepreister/Desktop/BasicCalc/Practice-Calc/BasicCalc.csproj",
+        "projectUniqueName": "/Users/cadepreister/Desktop/Practice-Calc/BasicCalc.csproj",
         "projectName": "BasicCalc",
-        "projectPath": "/Users/cadepreister/Desktop/BasicCalc/Practice-Calc/BasicCalc.csproj",
+        "projectPath": "/Users/cadepreister/Desktop/Practice-Calc/BasicCalc.csproj",
         "packagesPath": "/Users/cadepreister/.nuget/packages/",
-        "outputPath": "/Users/cadepreister/Desktop/BasicCalc/Practice-Calc/obj/",
+        "outputPath": "/Users/cadepreister/Desktop/Practice-Calc/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/cadepreister/.nuget/NuGet/NuGet.Config"
