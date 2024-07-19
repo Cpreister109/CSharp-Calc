@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.Common;
 using System.Diagnostics.Tracing;
 using System.Net;
+using System.Numerics;
 
 namespace calcshortforcalculator
 {
@@ -10,41 +11,55 @@ namespace calcshortforcalculator
     {
         public static void Main(string[] args)
         {
-            int status = 0;
+            float status = 0;
             Calculate calculator = new Calculate();
-            calculator.Start(0);
+            float total = calculator.Start(0);
+            status = total;
 
-            while (status != 1){
+            while (status != 'q'){
 
                 Console.WriteLine("--------------------------------------------------");
-                status = 1;
+                status = calculator.repeat(total);
+                total = status;
 
             }
         }
 
-        public void Start(float total){
+        public float Start(float total){
 
             Calculate calculator = new Calculate();
 
             Console.WriteLine("Welcome! What would you like to solve?");
             Console.WriteLine("+) Addition\n-) Subtraction\n*) Multiplication\n/) Division\n!) Quit");
             string input_string = Console.ReadLine();
+
+            if(input_string.Contains("!")){
+                Console.WriteLine("Shutting down...");
+                return 'q';}
+
             Console.WriteLine("Which numbers would you like to " + input_string + " (EX:1 2):");
             string numbers = Console.ReadLine();
             total = calculator.solve(total, numbers, input_string);
             Console.WriteLine($"The answer is: {total}");
+            return total;
         }
 
-        public void repeat(float total){
+        public float repeat(float total){
 
             Calculate calculator = new Calculate();
 
             Console.WriteLine("+) Addition\n-) Subtraction\n*) Multiplication\n/) Division\n!) Quit");
             string input_string = Console.ReadLine();
+
+            if(input_string.Contains("!")){
+                Console.WriteLine("Shutting down...");
+                return 'q';}
+            
             Console.WriteLine($"Which number would you like to {input_string} to your total ({total}):");
-            string numbers = Console.ReadLine();
-            total = calculator.solve(total, numbers, input_string);
+            string number = Console.ReadLine();
+            total = calculator.solve(total, number, input_string);
             Console.WriteLine($"The answer is: {total}");
+            return total;
         }
 
         public float solve(float total, string numbers, string input_string){
@@ -54,10 +69,20 @@ namespace calcshortforcalculator
 
             try
             {
-                string[] numbersList = numbers.Split();
-                float one = float.Parse(numbersList[0]);
-                float two = float.Parse(numbersList[1]);
+                float one;
+                float two;
                 char sym = input_string[0];
+
+                if (numbers.Contains(" ")){
+                    string[] numbersList = numbers.Split();
+                    one = float.Parse(numbersList[0]);
+                    two = float.Parse(numbersList[1]);
+                }
+                else{
+                    one = total;
+                    two = float.Parse(numbers);
+                }
+
 
                 if (sym == '+'){
                     total = calculator.add(one, two);
@@ -74,10 +99,6 @@ namespace calcshortforcalculator
                 else if(sym == '/'){
                     total = calculator.div(one, two);
                     return total;
-                }
-                else if(sym == '!'){
-                    Console.WriteLine("Shutting down...");
-                    return status;
                 }
                 }
                 catch (Exception ex)
