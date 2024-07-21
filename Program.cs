@@ -1,11 +1,4 @@
-﻿using System.ComponentModel;
-using System.Data;
-using System.Data.Common;
-using System.Diagnostics.Tracing;
-using System.Net;
-using System.Numerics;
-
-namespace calcshortforcalculator
+﻿namespace calcshortforcalculator
 {
     class Calculate 
     {
@@ -18,7 +11,9 @@ namespace calcshortforcalculator
 
             while (status != 'q'){
 
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("--------------------------------------------------");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 status = calculator.repeat(total);
                 total = status;
 
@@ -29,18 +24,23 @@ namespace calcshortforcalculator
 
             Calculate calculator = new Calculate();
 
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("Welcome! What would you like to solve?");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("+) Addition\n-) Subtraction\n*) Multiplication\n/) Division\n!) Quit");
             string input_string = Console.ReadLine();
 
             if(input_string.Contains("!")){
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Shutting down...");
                 return 'q';}
-
+            
             Console.WriteLine("Which numbers would you like to " + input_string + " (EX:1 2):");
             string numbers = Console.ReadLine();
             total = calculator.solve(total, numbers, input_string);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"The answer is: {total}");
+            Console.ForegroundColor = ConsoleColor.Blue;
             return total;
         }
 
@@ -52,13 +52,16 @@ namespace calcshortforcalculator
             string input_string = Console.ReadLine();
 
             if(input_string.Contains("!")){
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Shutting down...");
                 return 'q';}
             
             Console.WriteLine($"Which number would you like to {input_string} to your total ({total}):");
             string number = Console.ReadLine();
             total = calculator.solve(total, number, input_string);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"The answer is: {total}");
+            Console.ForegroundColor = ConsoleColor.Blue;
             return total;
         }
 
